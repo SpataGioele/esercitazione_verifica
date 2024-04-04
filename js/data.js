@@ -24,3 +24,6 @@ export const shops = [
         address: "Corso Vittorio Emanuele II, 31, 10125 Torino TO, Italy"
     }
 ];
+
+export const models = ["Xiaomi Note 11S", "Samsung Galaxy A14", "Lenovo Tab M10 Plus", "Logitech M90", "Logitech K120", "HP 250 G9"];
+export const prices = [148, 129.90, 199, 6.49, 12.99, 148];

@@ -1,8 +1,9 @@
-import { shops } from "./data.js"
+import { shops, models, prices } from "./data.js"
 
 function main() {
     const map = buildMap()
     buildAllMarker(map)
+    buildChart("myChart")
 }
 
 // functions
@@ -21,6 +22,42 @@ function buildAllMarker(map) {
         var marker = L.marker([shop.latitude, shop.longitude]).addTo(map);
         marker.bindPopup(`<b>${shop.city}</b><br>${shop.address}`).openPopup();
     }
+}
+
+function buildChart(canvasId) {
+    const conf = chartConfig()
+    const ctx = document.getElementById(canvasId);
+
+    new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: conf.labels,
+            datasets: conf.datasets
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+}
+
+function chartConfig() {
+    const conf = {
+        labels: models,
+        datasets: [
+            {
+                label: '#prices',
+                data: prices,
+                borderWidth: 1
+            }
+        ]
+    }
+    
+    return conf
 }
 
 // listeners
